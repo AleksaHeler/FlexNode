@@ -35,14 +35,14 @@
  - Possible actuators: buzzer, alarm/siren, LEDs, oled/LCD/display, linear actuator, servo motor, relay...
 
 ### Node component selection
- - ESP32 S3, which one exactly?
- - Battery?
- - Charger IC for the battery?
- - Low power, low dropoff regulator?
- - Solar panel handling IC?
+ - [ESP32 S3 WROOM 1 N16R8](https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html)
+ - Battery management IC - [MCP73831T](https://www.lcsc.com/product-detail/span-style-background-color-ff0-Battery-span-Management_Microchip-Tech-MCP73831T-2ACI-OT_C424093.html)
+ - LDO, low quiescent current 3v3 regulator - [TLV70433DBVR](https://www.lcsc.com/product-detail/Voltage-Regulators-Linear-Low-Drop-Out-span-style-background-color-ff0-LDO-span-Regulators_Texas-Instruments-TLV70433DBVR_C94917.html)
+ - Low-Side Gate Driver for open drain outputs - [UCC27517](https://www.lcsc.com/product-detail/Gate-Drivers_Texas-Instruments-UCC27517DBVR_C99395.html)
+
  - Which breakout connectors? Screw terminals?
- - H bridge? servo output? open drain outputs (so we can have external supply for larger loads, with common ground only)
  - Power pins also available on the breakout
+ - Battery
  - All comms: SPI, I2C, UART... break out to connectors
  - Neatly organized and labled all analog or digital outputs/inputs 
  - ...
