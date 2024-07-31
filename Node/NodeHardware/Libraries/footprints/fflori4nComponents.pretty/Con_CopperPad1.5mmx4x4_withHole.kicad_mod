@@ -1,0 +1,26 @@
+(module Con_CopperPad1.5mmx4x4_withHole (layer F.Cu) (tedit 63586668)
+  (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
+  (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
+  (fp_text reference U1 (at -0.2 9.4) (layer F.SilkS) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value PADx4 (at 1.1 8) (layer F.Fab) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text user U1 (at 13.77 6.225) (layer F.SilkS) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text user PADx4 (at 15.07 4.825) (layer F.Fab) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (pad 4 smd roundrect (at 13.97 3.175) (size 4 1.5) (drill (offset 1 0)) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25))
+  (pad 2 smd roundrect (at 13.97 -1.075) (size 4 1.5) (drill (offset 1 0)) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25))
+  (pad 1 smd roundrect (at 13.97 -3.175) (size 4 1.5) (drill (offset 1 0)) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25))
+  (pad "" thru_hole circle (at 0 0) (size 5.5 5.5) (drill 4.2) (layers *.Cu *.Mask))
+  (pad 3 smd roundrect (at 13.97 1.025) (size 4 1.5) (drill (offset 1 0)) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25))
+  (model ${KISYS3DMOD}/Package_DIP.3dshapes/DIP-8_W7.62mm.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+)
