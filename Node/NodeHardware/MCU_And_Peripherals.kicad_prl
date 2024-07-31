@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 45,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -20,7 +20,7 @@
       "footprints": true,
       "graphics": true,
       "keepouts": true,
-      "lockedItems": false,
+      "lockedItems": true,
       "otherItems": true,
       "pads": true,
       "text": true,
@@ -41,6 +41,7 @@
       11,
       12,
       13,
+      14,
       15,
       16,
       17,
@@ -61,8 +62,7 @@
       33,
       34,
       35,
-      36,
-      40
+      36
     ],
     "visible_layers": "fffffff_ffffffff",
     "zone_display_mode": 0
@@ -74,7 +74,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "NodeHardware.kicad_prl",
+    "filename": "MCU_And_Peripherals.kicad_prl",
     "version": 3
   },
   "project": {

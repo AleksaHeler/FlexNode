@@ -3,4 +3,5 @@
   (lib (name "Espressif")(type "KiCad")(uri "${KIPRJMOD}/Libraries/footprints/Espressif.pretty")(options "")(descr ""))
   (lib (name "TLV70433DBVR")(type "KiCad")(uri "${KIPRJMOD}/Libraries/footprints/TLV70433DBVR.pretty")(options "")(descr ""))
   (lib (name "TPS565201DDCR")(type "KiCad")(uri "${KIPRJMOD}/Libraries/footprints/TPS565201DDCR.pretty")(options "")(descr ""))
+  (lib (name "fflori4nComponents")(type "KiCad")(uri "${KIPRJMOD}/Libraries/footprints/fflori4nComponents.pretty")(options "")(descr ""))
 )
