@@ -29,22 +29,40 @@
  - All comms: SPI, I2C, UART... break out to connectors
  - What actuators will we have? What are the power requirements?
    - H bridge? servo output? DC motor output? Relay/SSR output? What will be on the PCB, and what connected externally within the box
- - Possible sensors: temp, humidity, atm. pressure, light, microwave presence sensor, PIR,
-   reed switch for doors, air quality (mostly dust particles), microphone/sound sensor,
-   knock-over sensor (when something falls), fire sensor, soil moisture, weight scale...
- - Possible actuators: buzzer, alarm/siren, LEDs, oled/LCD/display, linear actuator, servo motor, relay...
+ - Example sensor inputs (3x 1wire, 3x I2C, 4x ADC, 5x dig in):
+   - temp - 1 wire
+   - humidity - 1 wire
+   - atm. pressure - I2C, 1 wire
+   - light - analog input
+   - microwave presence sensor - dig in
+   - PIR - dig in
+   - reed switch for doors - dig in
+   - air quality (mostly dust particles) - I2C
+   - microphone/sound sensor - analog input
+   - knock-over sensor (when something falls) - dig in
+   - fire sensor - dig in/ analog input
+   - soil moisture - analog input
+   - weight scale - I2C
+ - Example actuator outputs (5x open drain, 1x PWM, I2C):
+   - buzzer - dig out, open drain
+   - alarm/siren - open drain
+   - LEDs - dig out, open drain
+   - oled/LCD/display - I2C
+   - linear actuator - open drain
+   - servo motor - PWM output
+   - relay - open drain
+ - Based on examples:
+   - 6x digital inputs/outpus (with 1wire support)
+   - 4x analog inputs
+   - 4x open drain, high power outputs
+   - 2x PWM, servo outputs
 
 ### Node component selection
  - [ESP32 S3 WROOM 1 N16R8](https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html)
  - Battery management IC - [MCP73831T](https://www.lcsc.com/product-detail/span-style-background-color-ff0-Battery-span-Management_Microchip-Tech-MCP73831T-2ACI-OT_C424093.html)
  - LDO, low quiescent current 3v3 regulator - [TLV70433DBVR](https://www.lcsc.com/product-detail/Voltage-Regulators-Linear-Low-Drop-Out-span-style-background-color-ff0-LDO-span-Regulators_Texas-Instruments-TLV70433DBVR_C94917.html)
  - Low-Side Gate Driver for open drain outputs - [UCC27517](https://www.lcsc.com/product-detail/Gate-Drivers_Texas-Instruments-UCC27517DBVR_C99395.html)
-
- - Which breakout connectors? Screw terminals?
- - Power pins also available on the breakout
+ - Battery: 1 cell LiIon
+ - Screw terminals
  - Battery
- - All comms: SPI, I2C, UART... break out to connectors
- - Neatly organized and labled all analog or digital outputs/inputs 
- - ...
-
 
