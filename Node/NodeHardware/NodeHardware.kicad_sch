@@ -6610,6 +6610,86 @@
 		)
 		(uuid e02321a5-3ec2-43ed-aa9b-968be41152ae)
 	)
+	(text_box "floki: We can use removable screw terminals they are a bit expensive but very handy to quickly connect/disconnect and can handle high current and wire ferrels. will add a con here with footprint\n"
+		(exclude_from_sim no)
+		(at 288.925 217.17 0)
+		(size 32.385 5.715)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type color)
+			(color 255 0 17 1)
+		)
+		(effects
+			(font
+				(size 0.5 0.5)
+			)
+			(justify left top)
+		)
+		(uuid "166b8286-4557-40ec-9284-ed8ed4325989")
+	)
+	(text_box "floki: Lets leave comments like this, since I dont see any built in way for review"
+		(exclude_from_sim no)
+		(at 19.05 24.765 0)
+		(size 31.75 1.905)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type color)
+			(color 255 0 17 1)
+		)
+		(effects
+			(font
+				(size 0.5 0.5)
+			)
+			(justify left top)
+		)
+		(uuid "72a32c4b-2214-4fce-bc61-11be4c17ac1e")
+	)
+	(text_box "floki: Consider using PWR_IN_P as an input source for 3v3 regulator, this way 5v reg can be switched off completele when not needed."
+		(exclude_from_sim no)
+		(at 91.44 81.28 0)
+		(size 32.385 5.715)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type color)
+			(color 255 0 17 1)
+		)
+		(effects
+			(font
+				(size 0.5 0.5)
+			)
+			(justify left top)
+		)
+		(uuid "85af0d53-8e1d-42d8-abb4-ec1a66f2f435")
+	)
+	(text_box "floki: Discuss if 150mA is enough for low power, should we be able to use WiFi on the ESP in low power mode?\nMaybe we can use a single 3v3 regulator chip? since it is unlikely that the board will power big loads on 3v3, only smaller sensors."
+		(exclude_from_sim no)
+		(at 175.26 190.5 0)
+		(size 32.385 5.715)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type color)
+			(color 255 0 17 1)
+		)
+		(effects
+			(font
+				(size 0.5 0.5)
+			)
+			(justify left top)
+		)
+		(uuid "e1747e41-41f1-4ef6-bdde-7bc152117c15")
+	)
 	(text "Battery managment IC"
 		(exclude_from_sim no)
 		(at 113.284 146.558 0)
@@ -8008,6 +8088,74 @@
 			(project "NodeHardware"
 				(path "/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 323.85 220.98 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0b6af6b7-86af-4252-aa62-7bf76dde9975")
+		(property "Reference" "J5"
+			(at 323.85 212.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "BATT"
+			(at 323.85 214.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "fflori4nComponents:TerminalBlockRemovablex2_Silk"
+			(at 323.85 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 323.85 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 323.85 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5cacaa56-a8e5-4399-a555-fd792471ad22")
+		)
+		(pin "1"
+			(uuid "13b726c8-e744-4dd4-b72c-c6919490549a")
+		)
+		(instances
+			(project "NodeHardware"
+				(path "/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475"
+					(reference "J5")
 					(unit 1)
 				)
 			)
