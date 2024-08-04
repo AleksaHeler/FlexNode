@@ -5430,6 +5430,16 @@
 		)
 		(uuid "01332c0a-05d1-4629-a256-5d5152382b74")
 	)
+	(text "TODO:\nchange diodes to a double diode package\nwith smaller footprint"
+		(exclude_from_sim no)
+		(at 269.494 246.126 0)
+		(effects
+			(font
+				(size 2.4 2.4)
+			)
+		)
+		(uuid "01cc0121-75ad-4fff-bb9f-57ef1095739c")
+	)
 	(text "TODO: think about adding 5v, 3v3 and 3v3LP voltage sense"
 		(exclude_from_sim no)
 		(at 367.792 146.05 0)
