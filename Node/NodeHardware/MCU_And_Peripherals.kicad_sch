@@ -5440,24 +5440,25 @@
 		)
 		(uuid "073a7395-5b75-42e8-952b-4442eb01db7e")
 	)
-	(text_box "TODO: Use a double diode IC with a smaller footprint"
+	(text_box "TODO:\ncheck if SPI is active low???"
 		(exclude_from_sim no)
-		(at 245.11 243.84 0)
-		(size 45.72 11.43)
+		(at 313.69 62.23 0)
+		(size 26.67 7.62)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(fill
-			(type none)
+			(type color)
+			(color 250 250 100 1)
 		)
 		(effects
 			(font
-				(size 2 2)
+				(size 1 1)
 			)
 			(justify left top)
 		)
-		(uuid "2129331c-6606-449c-990d-ce8ccf01858d")
+		(uuid "17f10db5-e013-476c-9a82-6a0c65b50dbf")
 	)
 	(text_box "NTC thermistor placed on the PCB for diagnostic measurement"
 		(exclude_from_sim no)
@@ -5517,6 +5518,26 @@
 		)
 		(uuid "479d54cd-3e6e-4cbd-a6e1-dc118387f256")
 	)
+	(text_box "TODO: Use a double diode IC with a smaller footprint"
+		(exclude_from_sim no)
+		(at 259.08 237.49 0)
+		(size 26.67 12.7)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type color)
+			(color 250 250 100 1)
+		)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left top)
+		)
+		(uuid "4f4e2dcc-9c3a-46ca-be53-6325e9dc8b31")
+	)
 	(text_box "SPI activity LEDs"
 		(exclude_from_sim no)
 		(at 320.04 30.48 0)
@@ -5536,6 +5557,26 @@
 			)
 		)
 		(uuid "520f8252-f55c-4aa6-8d7a-2ba2d84ea132")
+	)
+	(text_box "TODO: think about adding PWR, 5v and 3v3 voltage sense"
+		(exclude_from_sim no)
+		(at 373.38 146.05 0)
+		(size 26.67 7.62)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type color)
+			(color 250 250 100 1)
+		)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left top)
+		)
+		(uuid "558222d0-620e-4e57-ae0c-4ba9e115f8fc")
 	)
 	(text_box "Analog inputs have a 470R input resistance, so in the case of over voltage when current is flowing trough the 3.6V zener, there is no overcurrent. This 470R resistance should not affect the ADC measurements, but in case it does, we should add a quality external ADC IC. There is also a pulldown resistor, and a smoothing capacitor"
 		(exclude_from_sim no)
@@ -5614,15 +5655,25 @@
 		)
 		(uuid "b334ec98-52be-4d01-9bb1-0a124ba89f85")
 	)
-	(text "TODO: think about adding 5v, 3v3 and 3v3LP voltage sense"
+	(text_box "TODO: finish this part of the circuit"
 		(exclude_from_sim no)
-		(at 367.792 146.05 0)
+		(at 64.77 177.8 0)
+		(size 26.67 12.7)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type color)
+			(color 250 250 100 1)
+		)
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 			)
+			(justify left top)
 		)
-		(uuid "070aa0ac-0c81-4776-a996-e160f1366205")
+		(uuid "d3aff922-ebd9-4162-a04e-9453218babad")
 	)
 	(text "Overvoltage prot.\nRev. pol. prot."
 		(exclude_from_sim no)
@@ -5658,16 +5709,6 @@
 			(justify left)
 		)
 		(uuid "26ee7649-b52e-48d0-83ea-71840060ab9b")
-	)
-	(text "TODO:\ncheck if SPI is active low???"
-		(exclude_from_sim no)
-		(at 326.136 62.23 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "3f102111-558b-48f0-b42e-b6e43a68d451")
 	)
 	(text "MCU"
 		(exclude_from_sim no)
@@ -6246,7 +6287,7 @@
 	)
 	(global_label "BATT_SENSE"
 		(shape input)
-		(at 160.02 106.68 0)
+		(at 158.75 102.87 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6256,7 +6297,7 @@
 		)
 		(uuid "4bef17f8-6128-439f-bf82-f543ddcdcbf9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 174.3141 106.68 0)
+			(at 173.0441 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6356,7 +6397,7 @@
 	)
 	(global_label "SPI_SCLK"
 		(shape bidirectional)
-		(at 160.02 121.92 0)
+		(at 158.75 118.11 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6366,7 +6407,7 @@
 		)
 		(uuid "58715f9f-7e67-4949-aeb5-a80d48f63f3e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 172.946 121.92 0)
+			(at 171.676 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6400,7 +6441,7 @@
 	)
 	(global_label "LED_02"
 		(shape output)
-		(at 160.02 130.81 0)
+		(at 158.75 127 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6410,7 +6451,7 @@
 		)
 		(uuid "5e838017-e84c-423d-abf4-8b06827ff289")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 169.8389 130.81 0)
+			(at 168.5689 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6444,7 +6485,7 @@
 	)
 	(global_label "5V_REG_EN"
 		(shape output)
-		(at 160.02 97.79 0)
+		(at 158.75 93.98 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6454,7 +6495,7 @@
 		)
 		(uuid "6f254ab5-33a0-44af-a7cf-6d414aa3f9cf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 173.407 97.79 0)
+			(at 172.137 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6576,7 +6617,7 @@
 	)
 	(global_label "I2C_SDA"
 		(shape bidirectional)
-		(at 160.02 113.03 0)
+		(at 158.75 109.22 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6586,7 +6627,7 @@
 		)
 		(uuid "8712612a-803e-4f82-b5cf-eac55160155f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 171.7365 113.03 0)
+			(at 170.4665 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6642,7 +6683,7 @@
 	)
 	(global_label "SPI_CS"
 		(shape bidirectional)
-		(at 160.02 124.46 0)
+		(at 158.75 120.65 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6652,7 +6693,7 @@
 		)
 		(uuid "93d377b7-1d2e-4a38-bc25-5fbd12bc689a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 170.6479 124.46 0)
+			(at 169.3779 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6796,7 +6837,7 @@
 	)
 	(global_label "I2C_SCL"
 		(shape bidirectional)
-		(at 160.02 110.49 0)
+		(at 158.75 106.68 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6806,7 +6847,7 @@
 		)
 		(uuid "aa0cbf09-07a6-4d1b-98ec-58288f19400b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 171.676 110.49 0)
+			(at 170.406 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6862,7 +6903,7 @@
 	)
 	(global_label "PCB_TEMP"
 		(shape input)
-		(at 160.02 104.14 0)
+		(at 158.75 100.33 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6872,7 +6913,7 @@
 		)
 		(uuid "b9f2660c-6ed7-4478-9a23-7fc2911dd9c5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 172.6208 104.14 0)
+			(at 171.3508 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6906,7 +6947,7 @@
 	)
 	(global_label "3V3_REG_EN"
 		(shape output)
-		(at 160.02 100.33 0)
+		(at 158.75 96.52 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6916,7 +6957,7 @@
 		)
 		(uuid "bf853173-bfcb-4d9b-a69e-cfcdf47562b9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 174.6165 100.33 0)
+			(at 173.3465 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7082,7 +7123,7 @@
 	)
 	(global_label "LED_01"
 		(shape output)
-		(at 160.02 128.27 0)
+		(at 158.75 124.46 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7092,7 +7133,7 @@
 		)
 		(uuid "d641f0de-b218-4d75-a4e0-9eb9b28263bf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 169.8389 128.27 0)
+			(at 168.5689 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7104,7 +7145,7 @@
 	)
 	(global_label "SPI_MISO"
 		(shape bidirectional)
-		(at 160.02 116.84 0)
+		(at 158.75 113.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7114,7 +7155,7 @@
 		)
 		(uuid "d6c3143b-8a3d-418b-8cb4-38a52c58dea1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 172.7646 116.84 0)
+			(at 171.4946 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7148,7 +7189,7 @@
 	)
 	(global_label "USER_BUTTON"
 		(shape input)
-		(at 160.02 134.62 0)
+		(at 158.75 130.81 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7158,7 +7199,7 @@
 		)
 		(uuid "e4c43b09-60a8-4db3-a1e9-294abebbd0fa")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 176.1285 134.62 0)
+			(at 174.8585 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7258,7 +7299,7 @@
 	)
 	(global_label "SPI_MOSI"
 		(shape bidirectional)
-		(at 160.02 119.38 0)
+		(at 158.75 115.57 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7268,7 +7309,7 @@
 		)
 		(uuid "fd1be302-b72a-456e-8f2d-2b5c90e036e7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 172.7646 119.38 0)
+			(at 171.4946 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
