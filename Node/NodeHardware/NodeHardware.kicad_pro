@@ -221,7 +221,10 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      "multiple_net_names|2730500|1117600|a26b32f0-9d59-40d3-8b70-88f27d126b75|0ba905ca-658e-4ba0-b077-9afdb0d787ba|/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475/af1e1901-0d26-403c-801a-a03564954e55|/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475/af1e1901-0d26-403c-801a-a03564954e55|/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475/af1e1901-0d26-403c-801a-a03564954e55",
+      "multiple_net_names|812800|571500|99e80afe-a0e5-4f02-b14a-98eaaf309764|cc475097-3453-4c6f-a2b0-55fb327bacfa|/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475|/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475|/fbf6e9fb-8cea-4ffc-9c5e-2f0b106da475"
+    ],
     "meta": {
       "version": 0
     },
@@ -568,6 +571,14 @@
       "version": 1
     },
     "net_format_name": "",
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 4,
+      "workbook_filename": ""
+    },
     "page_layout_descr_file": "",
     "plot_directory": "",
     "spice_current_sheet_as_root": false,

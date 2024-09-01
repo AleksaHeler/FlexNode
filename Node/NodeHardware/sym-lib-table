@@ -2,4 +2,8 @@
   (version 7)
   (lib (name "UCC27517DBVR")(type "KiCad")(uri "${KIPRJMOD}/Libraries/symbols/UCC27517DBVR.kicad_sym")(options "")(descr ""))
   (lib (name "IRLR024NTRPBF")(type "KiCad")(uri "${KIPRJMOD}/Libraries/symbols/IRLR024NTRPBF.kicad_sym")(options "")(descr ""))
+  (lib (name "Espressif")(type "KiCad")(uri "${KIPRJMOD}/Libraries/symbols/Espressif.kicad_sym")(options "")(descr ""))
+  (lib (name "fflori4nComponents")(type "KiCad")(uri "${KIPRJMOD}/Libraries/symbols/fflori4nComponents.kicad_sym")(options "")(descr ""))
+  (lib (name "TLV70433DBVR")(type "KiCad")(uri "${KIPRJMOD}/Libraries/symbols/TLV70433DBVR.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS565201DDCR")(type "KiCad")(uri "${KIPRJMOD}/Libraries/symbols/TPS565201DDCR.kicad_sym")(options "")(descr ""))
 )
