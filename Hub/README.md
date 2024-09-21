@@ -40,9 +40,6 @@ Taken from [this video](https://www.youtube.com/watch?v=I4alYbgDi4I&list=PL3XBzm
 
 - todo: change from default ports, to use url/grafana and url/nodered (not port :3000, that should be blocked)
 
-- Continue this video from 9:30
-  https://www.youtube.com/watch?v=I4alYbgDi4I&list=PL3XBzmAj53RnezxZ_uq8YMymURnnLTqZP&index=9 
-
 - Hearbeat signal / watchdog
   https://www.youtube.com/watch?v=IGB2eRvhvB0&list=PL3XBzmAj53RnezxZ_uq8YMymURnnLTqZP&index=10
 

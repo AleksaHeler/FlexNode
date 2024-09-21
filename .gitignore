@@ -1,3 +1,7 @@
+
+# Admin software file, where WiFi passwords and other sensitive info is stored
+admin.h
+
 # Created by https://www.toptal.com/developers/gitignore/api/kicad
 # Edit at https://www.toptal.com/developers/gitignore?templates=kicad
 
