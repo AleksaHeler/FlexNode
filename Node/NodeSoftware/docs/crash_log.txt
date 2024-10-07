@@ -1,0 +1,88 @@
+{"pcb_temp":27,"bmp_temperature":26.51,"bmp_pressure":100247.7,"bmp_altitude":90.08245,"presence_detected":1,"ambient_light":3917,"name":"ESP32_Node_37"}
+{"pcb_temp":27,"bmp_temperature":26.51,"bmp_pressure":100247.7,"bmp_altitude":90.08245,"presence_detected":1,"ambient_light":3918,"name":"ESP32_Node_37"}
+{"pcb_temp":27,"bmp_temperature":26.51,"bmp_pressure":100247.7,"bmp_altitude":90.08245,"presence_detected":1,"ambient_light":3923,"name":"ESP32_Node_37"}
+{"pcb_temp":27,"bmp_temperature":26.51,"bmp_pressure":100247.7,"bmp_altitude":90.08245,"presence_detected":1,"ambient_light":3929,"name":"ESP32_Node_37"}
+Guru Meditation Error: Core  1 panic'ed (Interrupt wdt timeout on CPU1). 
+
+Core  1 register dump:
+PC      : 0x42011bc0  PS      : 0x00060134  A0      : 0x8200d310  A1      : 0x3fcebd40  
+A2      : 0x00000014  A3      : 0x00000001  A4      : 0x3fc9b068  A5      : 0x3fcf4c80  
+A6      : 0x00060023  A7      : 0x00000003  A8      : 0x60004000  A9      : 0xac000305  
+A10     : 0x00000001  A11     : 0x00000000  A12     : 0x00000014  A13     : 0x00060123  
+A14     : 0xb33fffff  A15     : 0xb33fffff  SAR     : 0x00000014  EXCCAUSE: 0x00000006  
+EXCVADDR: 0x00000000  LBEG    : 0x400556d5  LEND    : 0x400556e5  LCOUNT  : 0xfffffffd  
+
+
+
+Backtrace: 0x42011bbd:0x3fcebd40 0x4200d30d:0x3fcebd60 0x420059b5:0x3fcebd80 0x42005a93:0x3fcebda0 0x42005b2c:0x3fcebf00 0x42003bfd:0x3fcebf30 0x420036f0:0x3fcebf60 0x42010de8:0x3fcebf90 0x4038037a:0x3fcebfb0
+
+
+Core  0 register dump:
+PC      : 0x4037b7ba  PS      : 0x00060034  A0      : 0x8201a5c8  A1      : 0x3fcf47f0  
+A2      : 0x00000000  A3      : 0xb33fffff  A4      : 0x80380611  A5      : 0x3fcf4710  
+A6      : 0x00060023  A7      : 0x00000003  A8      : 0x82019922  A9      : 0x3fcf47b0  
+A10     : 0x00000000  A11     : 0xb33fffff  A12     : 0x80380611  A13     : 0x3fca2920  
+A14     : 0x00060023  A15     : 0x00000003  SAR     : 0x0000001d  EXCCAUSE: 0x00000006  
+EXCVADDR: 0x00000000  LBEG    : 0x00000000  LEND    : 0x00000000  LCOUNT  : 0x00000000  
+
+
+Backtrace: 0x4037b7b7:0x3fcf47f0 0x4201a5c5:0x3fcf4810 0x4037e69f:0x3fcf4830 0x4038037a:0x3fcf4850
+
+
+
+
+ELF file SHA256: a4db7e666705b022
+
+Guru Meditation Error: Core  1 panic'ed (Interrupt wdt timeout on CPU1). 
+
+Core  1 register dump:
+PC      : 0x403850db  PS      : 0x00020e34  A0      : 0x8204ddc7  A1      : 0x3fcebb50  
+A2      : 0x00020e23  A3      : 0xa5a5a5a5  A4      : 0x8204ddc7  A5      : 0x00060e25  
+A6      : 0xfffbfff0  A7      : 0x00000076  A8      : 0x8204dced  A9      : 0x3fcebb20  
+A10     : 0x00000000  A11     : 0x3fcebb3b  A12     : 0x0000000a  A13     : 0x3fcebb3c  
+A14     : 0x3fcf4790  A15     : 0x3fcebb10  SAR     : 0x0000000a  EXCCAUSE: 0x00000006  
+EXCVADDR: 0x00000000  LBEG    : 0x400570e8  LEND    : 0x400570f3  LCOUNT  : 0x00000000  
+
+
+Backtrace: 0x403850d8:0x3fcebb50 0x4204ddc4:0x3fcebb60 0x4201940a:0x3fcebb80 0x4200e97c:0x3fcebbf0 0x42019de2:0x3fcebc10 0x403779a1:0x3fcebc60 0x40377a28:0x3fcebc80 0x00040022:0x3fcebd40 |<-CORRUPTED
+
+
+
+Core  0 register dump:
+PC      : 0x4037b7ba  PS      : 0x00060034  A0      : 0x8201a5c8  A1      : 0x3fcf47f0  
+A2      : 0x00000000  A3      : 0xb33fffff  A4      : 0x80380611  A5      : 0x3fcf4710  
+A6      : 0x00060023  A7      : 0x00000003  A8      : 0x82019922  A9      : 0x3fcf47b0  
+A10     : 0x00000000  A11     : 0xb33fffff  A12     : 0x80380611  A13     : 0x3fca2920  
+A14     : 0x00060023  A15     : 0x00000003  SAR     : 0x0000001d  EXCCAUSE: 0x00000006  
+EXCVADDR: 0x00000000  LBEG    : 0x00000000  LEND    : 0x00000000  LCOUNT  : 0x00000000  
+
+
+Backtrace: 0x4037b7b7:0x3fcf47f0 0x4201a5c5:0x3fcf4810 0x4037e69f:0x3fcf4830 0x4038037a:0x3fcf4850
+
+
+
+ELF file SHA256: a4db7e666705b022
+
+Re-entered core dump! Exception happened during core dump!
+Rebooting...
+   ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x9 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x42019cee
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3818,len:0x109c
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xb50
+load:0x403cc700,len:0x2fe4
+entry 0x403c98ac
+
+Connecting to WhyyFighShignal
+......
+WiFi connected
+IP address: 
+192.168.0.26
+Attempting MQTT connection...connected
+{"pcb_temp":27,"bmp_temperature":26.51,"bmp_pressure":100248,"bmp_altitude":90.05354,"presence_detected":1,"ambient_light":3918,"name":"ESP32_Node_37"}
+{"pcb_temp":27,"bmp_temperature":26.51,"bmp_pressure":100248.2,"bmp_altitude":90.03883,"presence_detected":1,"ambient_light":3921,"name":"ESP32_Node_37"}
+{"pcb_temp":27,"bmp_temperature":26.51,"bmp_pressure":100248.2,"bmp_altitude":90.03883,"presence_detected":1,"ambient_light":3925,"name":"ESP32_Node_37"}

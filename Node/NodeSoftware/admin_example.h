@@ -5,6 +5,7 @@
  *  WiFi specific things
  ***********************************************/
 
+/* TODO Make an array of WiFis to use, so if it cant connect to one, it tries another (maybe also same with MQTT server) */
 const char *wifi_ssid = "ssid";
 const char *wifi_password = "pass";
 
