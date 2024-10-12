@@ -1,4 +1,5 @@
 /* System includes */
+#include "esp32s3/rom/rtc.h"
 #include "config.h"
 
 /* Own includes */
@@ -14,10 +15,6 @@
 /* Storing values we read */
 #if PCB_TEMP_NTC_PRESENT
   float system_pcb_temp = 0;
-#endif
-
-#if STATUS_LED_PRESENT
-  long long last_led_blink_time = 0;
 #endif
 
 long long last_cycle_timestamp = 0;
@@ -156,6 +153,28 @@ long long last_cycle_timestamp = 0;
  *  FUNCTION DEFINITIONS
  ***********************************************/
 
+/** Debug to serial why the ECU was reset! */
+void verbose_print_reset_reason(int reason) {
+  switch (reason) {
+    case 1:  Serial.println("Vbat power on reset"); break;
+    case 3:  Serial.println("Software reset digital core"); break;
+    case 4:  Serial.println("Legacy watch dog reset digital core"); break;
+    case 5:  Serial.println("Deep Sleep reset digital core"); break;
+    case 6:  Serial.println("Reset by SLC module, reset digital core"); break;
+    case 7:  Serial.println("Timer Group0 Watch dog reset digital core"); break;
+    case 8:  Serial.println("Timer Group1 Watch dog reset digital core"); break;
+    case 9:  Serial.println("RTC Watch dog Reset digital core"); break;
+    case 10: Serial.println("Instrusion tested to reset CPU"); break;
+    case 11: Serial.println("Time Group reset CPU"); break;
+    case 12: Serial.println("Software reset CPU"); break;
+    case 13: Serial.println("RTC Watch dog Reset CPU"); break;
+    case 14: Serial.println("for APP CPU, reset by PRO CPU"); break;
+    case 15: Serial.println("Reset when the vdd voltage is not stable"); break;
+    case 16: Serial.println("RTC Watch dog reset digital core and rtc module"); break;
+    default: Serial.println("NO_MEAN");
+  }
+}
+
 #if PCB_TEMP_NTC_PRESENT
   /* Convert raw ADC value from a 10k NTC thermistor (connected to 3.3V on one side,
     and on another via 10k pulldown to GND) */
@@ -185,13 +204,12 @@ long long last_cycle_timestamp = 0;
 
 void system_setup()
 {
+  /** @todo Add some ASCII art welcome message here! */
+  Serial.println("\n\nCPU0 reset reason:"); 
+  verbose_print_reset_reason(rtc_get_reset_reason(0));
+
   #if PCB_TEMP_NTC_PRESENT
     pinMode(PCB_TEMP_PIN, INPUT);
-  #endif
-
-  #if STATUS_LED_PRESENT
-    pinMode(STATUS_LED_PIN, OUTPUT);
-    digitalWrite(STATUS_LED_PIN, HIGH);
   #endif
 }
 
@@ -207,7 +225,7 @@ void system_loop(JsonDocument* json_message)
   (*json_message)["free_heap"] = esp_get_free_heap_size() / 1000.0; // In kilobytes
 
   /* Log the total time taken by the main cycle */
-  (*json_message)["main_cycle_time_ms"] = (float(now - last_cycle_timestamp))/1000.0;
+  (*json_message)["cycle_time"] = (float(now - last_cycle_timestamp))/1000.0;
   last_cycle_timestamp = now;
 
   /* Also log how much time was the device running */
@@ -218,17 +236,13 @@ void system_loop(JsonDocument* json_message)
     system_pcb_temp = calculate_pcb_temp(analogRead(PCB_TEMP_PIN));
     (*json_message)["pcb_temp"] = system_pcb_temp;
   #endif
-  
-  /* Every now and then... */
-  #if STATUS_LED_PRESENT
-    if (now - last_led_blink_time > (LED_BLINK_COUNTDOWN * 1000))
-    {
-      last_led_blink_time = now;
 
-      /* Blink the LED */
-      digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN));
-    }
-  #endif
+  /* Since we crash after a bit over 1h of runtime: */
+  /* If enoguh time has passed, just give up and try again */
+  if (millis() > (unsigned long)(45 * 60 * 1000))
+  {
+    ESP.restart();
+  }
 }
 
 void system_print_log(JsonDocument* json_message)

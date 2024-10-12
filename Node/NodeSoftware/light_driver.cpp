@@ -34,6 +34,6 @@ void light_loop(JsonDocument* json_message)
     /* And convert it to go from 0 to 100% */
     ambient_light_value = (raw_light_value / 4096.0) * 100; // %
     
-    (*json_message)["ambient_light"] = ambient_light_value;
+    (*json_message)["light"] = ambient_light_value;
   #endif
 }

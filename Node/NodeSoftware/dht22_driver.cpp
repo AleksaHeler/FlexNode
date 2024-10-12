@@ -42,12 +42,11 @@ void dht22_loop(JsonDocument* json_message)
     /* Check if we got garbage... */
     if ( isnan(dht22_temperature) || isnan(dht22_humidity) ) {
       /* Failed to read from DHT22 sensor! */
-      /* Maybe DHT was not found, or we encountered error, try re-initializing it... */
-      dht22.begin();
+      /* Maybe DHT was not found, or we encountered error */
     } else {
       /* Then store them in the JSON */
-      (*json_message)["dth_temperature"] = dht22_temperature;
-      (*json_message)["dth_humidity"] = dht22_humidity;
+      (*json_message)["dth_temp"] = dht22_temperature;
+      (*json_message)["dth_humid"] = dht22_humidity;
     }
   #endif
 }

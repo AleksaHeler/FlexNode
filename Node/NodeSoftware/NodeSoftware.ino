@@ -43,7 +43,7 @@ void loop()
 {
   /* Main loop... */
   long long now = micros();
-  if (now - last_main_cycle > ( main_cycle_time * 1000 ))
+  if (now - last_main_cycle > MAIN_CYCLE_TIME)
   {
     last_main_cycle = now;
 
@@ -55,13 +55,14 @@ void loop()
     light_loop(&main_json_message);
     mqtt_loop(&main_json_message);
 
-    /* And debug the JSON message in the Serial monitor... */
-    if(now - last_debug_cycle > ( debug_cycle_time * 1000 ))
-    {
-      last_debug_cycle = now;
-      system_print_log(&main_json_message);
-    }
   }
+  /* And debug the JSON message in the Serial monitor... */
+  else if(now - last_debug_cycle > DEBUG_CYCLE_TIME)
+  {
+    last_debug_cycle = now;
+    system_print_log(&main_json_message);
+  }
+  /* Time for some background tasks...  */
   else
   {
     /* Something to do in the background while waiting... */

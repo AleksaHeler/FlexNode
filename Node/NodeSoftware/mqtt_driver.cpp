@@ -12,14 +12,19 @@
  *  VARIABLES
  ***********************************************/
 
-#if MQTT_PRESENT
-  WiFiClient espClient;
-  PubSubClient client(espClient);
+#if STATUS_LED_PRESENT
+  /* Pretty self explanitory */
+  long long last_led_blink_time = 0;
 #endif
 
-/* Keep track of the time when we last send an MQTT message */
 #if MQTT_PRESENT
-  unsigned long last_send_time = 0;
+  mqtt_states_e mqtt_state = mqtt_idle;
+  WiFiClient espClient;
+  PubSubClient client(espClient);
+
+  /* Keep track of the time when we last send an MQTT message */
+  long long last_send_time = 0;
+  long long active_delay_start_time = 0;
 #endif
 
 /***********************************************
@@ -27,36 +32,13 @@
  ***********************************************/
 
 #if MQTT_PRESENT
-  void mqtt_setup_wifi()
-  {
-    // We start by connecting to a WiFi network
-    Serial.println();
-    Serial.print("Connecting to ");
-    Serial.println(wifi_ssid);
-
-    WiFi.begin(wifi_ssid, wifi_password);
-
-    while (WiFi.status() != WL_CONNECTED)
-    {
-      delay(200);
-      Serial.print(".");
-      digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN)); /* This will toggle the LED every 200ms while trying to connect to WiFi */
-    }
-
-    Serial.println("");
-    Serial.println("WiFi connected");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-  }
-#endif
-
-#if MQTT_PRESENT
+  /** Callback function, which will be called when we receive a message on a topic we are subscribed to */
   void callback(char *topic, byte *message, unsigned int length)
   {
     Serial.println();
-    Serial.print("Message arrived on topic: ");
+    Serial.print("Message arrived on topic: '");
     Serial.print(topic);
-    Serial.print(". Message: ");
+    Serial.print("'. Message: ");
     String messageTemp;
 
     for (int i = 0; i < length; i++)
@@ -68,71 +50,160 @@
   }
 #endif
 
-#if MQTT_PRESENT
-  void wifi_reconnect()
-  {
-    // Loop until we're reconnected
-    while (!client.connected())
-    {
-      Serial.print("Attempting MQTT connection...");
-      // Attempt to connect
-      if (client.connect(mqtt_devicename, mqtt_username, mqtt_password))
-      {
-        Serial.println("connected");
-        // Subscribe
-        client.subscribe("esp32/output");
-      }
-      else
-      {
-        Serial.print("failed, rc=");
-        Serial.print(client.state());
-        Serial.println(" try again soon...");
-        // Wait 1 second before retrying
-        delay(200); /** @todo Make this an active wait */
-        digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN));
-        /** @todo Or make this restart the device? */
-      }
-    }
-  }
-#endif
-
 void mqtt_setup()
 {
+  #if STATUS_LED_PRESENT
+    pinMode(STATUS_LED_PIN, OUTPUT);
+    digitalWrite(STATUS_LED_PIN, HIGH);
+  #endif
+
   #if MQTT_PRESENT
-    mqtt_setup_wifi();
-    client.setServer(mqtt_server, 1883);
-    client.setCallback(callback);
+    /* Initially, we only have to kick off the state machine, and it will go its way: */
+    mqtt_state = mqtt_wifi_start;
   #endif
 }
 
 void mqtt_loop(JsonDocument* json_message)
 {
-  /* If WiFi connection is lost... */
-  /** @todo Aleksa Heler: make this an active wait function, so we have some state machine here, and first it tries to connect, and only then sends */
-  #if MQTT_PRESENT
-    if (!client.connected())
-    {
-      wifi_reconnect();
-    }
-    client.loop(); /* MQTT client handle */
-  #endif
-  
-  /* Store our device name in the JSON */
+  /* Get current time. Needed later... */
+  long long now = micros();
+
+  /* Store our device name in the JSON (no matter what) */
   (*json_message)["name"] = mqtt_devicename;
 
-  /* If we have connection, then handle the sending of data (every now and then) */
+  /* Now for some WiFi/MQTT state machine stuff... */
   #if MQTT_PRESENT
-    long now = millis();
-    if (now - last_send_time > send_delay)
+    switch(mqtt_state)
     {
-      /* Keep track of time */
-      last_send_time = now;
+      /***********************************************
+      *  Idle: main functonality code
+      ***********************************************/
+      case (mqtt_idle):
+        /* If we lost MQTT connection, try to connect again! */
+        if (!client.connected())
+        {
+          mqtt_state = mqtt_mqtt_start;
+          break;
+        }
 
-      char tempString[512]; /* TODO: Make this parametric, and make it even bigger just in case */
-      serializeJson(*json_message, tempString);
-      Serial.print("Sending MQTT message: ");
-      Serial.println(tempString);
-      client.publish("home/nodes", tempString);
+        /* MQTT client handle */
+        client.loop();
+        
+        /* Blink the blinky every now and then... */
+        #if STATUS_LED_PRESENT
+          if (now - last_led_blink_time > LED_BLINK_DELAY)
+          {
+            last_led_blink_time = now;
+
+            /* Blink the LED */
+            digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN));
+          }
+        #endif
+
+        /* Did the time come to send the data? */
+        if (now - last_send_time > SEND_DELAY)
+        {
+          /* Keep track of time */
+          last_send_time = now;
+
+          char tempString[MQTT_MESSAGE_MAX_LENGTH];
+          serializeJson((*json_message), tempString);
+          Serial.print("Sending MQTT message: ");
+          Serial.println(tempString);
+          client.publish(mqtt_publish_topic, tempString);
+        }
+        break;
+
+      /***********************************************
+      *  WiFi related states:
+      ***********************************************/
+      case (mqtt_wifi_start):
+        /* We start by connecting to a WiFi network */
+        Serial.print("\nConnecting to ");
+        Serial.println(wifi_ssid);
+        WiFi.begin(wifi_ssid, wifi_password);
+        mqtt_state = mqtt_wifi_connecting;
+        break;
+
+      case (mqtt_wifi_connecting):
+        /* If still not connected, blink the LED every once in a while */
+        if(WiFi.status() != WL_CONNECTED)
+        {
+          /* Using 'smart' active delay! */
+          if (now - active_delay_start_time > WIFI_CONNECT_LED_BLINK_DELAY)
+          {
+            active_delay_start_time = now;
+            Serial.print(".");
+            digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN)); /* This will toggle the LED every 200ms while trying to connect to WiFi */
+          }
+        }
+        else
+        {
+          /* Wow, we connected to wifi! Onwards! */
+          mqtt_state = mqtt_wifi_connected;
+        }
+        break;
+
+      case (mqtt_wifi_connected):
+        Serial.println("\nWiFi connected");
+        Serial.println("IP address: ");
+        Serial.println(WiFi.localIP());
+        mqtt_state = mqtt_mqtt_start;
+        break;
+
+      /***********************************************
+      *  MQTT related states:
+      ***********************************************/
+      case (mqtt_mqtt_start):
+        client.setServer(mqtt_server, 1883);
+        client.setCallback(callback);
+        mqtt_state = mqtt_mqtt_connecting;
+        break;
+
+      case (mqtt_mqtt_connecting):
+        if (!client.connected())
+        {
+          /* Actively wait before trying re-connection */
+          if (now - active_delay_start_time > WIFI_CONNECT_LED_BLINK_DELAY)
+          {
+            active_delay_start_time = now;
+            Serial.print("Attempting MQTT connection... ");
+            if (client.connect(mqtt_devicename, mqtt_username, mqtt_password))
+            {
+              Serial.println("connected");
+              client.subscribe(mqtt_subscribe_topic);
+            }
+            else
+            {
+              Serial.print("failed, return code = ");
+              Serial.print(client.state());
+              Serial.println(". Trying again soon...");
+              digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN));
+            }
+          }
+        }
+        else
+        {
+          mqtt_state = mqtt_mqtt_connected;
+        }
+        break;
+
+      case (mqtt_mqtt_connected):
+        mqtt_state = mqtt_idle;
+        break;
+
+      /***********************************************
+      *  Errors:
+      ***********************************************/
+      case (mqtt_error):
+        /* Do the unthinkable :o */
+        ESP.restart();
+        break;
+
+      default:
+        /* Impossible! */
+        mqtt_state = mqtt_error;
+        break;
     }
   #endif
 }

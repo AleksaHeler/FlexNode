@@ -30,6 +30,6 @@ void presence_loop(JsonDocument* json_message)
 {
   #if PRESENCE_SENSOR_PRESENT
     presence_detected = digitalRead(PRESENCE_SENSOR_PIN);
-    (*json_message)["presence_detected"] = presence_detected;
+    (*json_message)["presence"] = presence_detected;
   #endif
 }

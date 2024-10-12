@@ -60,9 +60,9 @@ void bmp280_loop(JsonDocument* json_message)
       altitude = bmp.readAltitude();
 
       /* Then store them in the JSON */
-      (*json_message)["bmp_temperature"] = temperature;
-      (*json_message)["bmp_pressure"] = pressure;
-      (*json_message)["bmp_altitude"] = altitude;
+      (*json_message)["bmp_tempe"] = temperature;
+      (*json_message)["bmp_press"] = pressure;
+      (*json_message)["bmp_alt"] = altitude;
     }
     else
     {
