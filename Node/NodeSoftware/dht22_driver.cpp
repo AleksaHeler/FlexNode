@@ -1,5 +1,5 @@
 /* System includes */
-#include <DHT.h>
+#include <DHT.h> /* DHT sensor library (by Adafruit) */
 #include "config.h"
 
 /* Own includes */

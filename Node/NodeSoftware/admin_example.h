@@ -14,7 +14,7 @@ const char *wifi_password = "pass";
  ***********************************************/
 
 /* Used as signature in JSON data being sent */
-const char *mqtt_devicename = "ESP32_Device_Name";
+const char *network_devicename = "ESP32_Device_Name";
 /* Used as user/password for MQTT server connection */
 const char *mqtt_username = "node_username";
 const char *mqtt_password = "node_password";

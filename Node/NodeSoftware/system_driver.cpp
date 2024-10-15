@@ -17,7 +17,7 @@
   float system_pcb_temp = 0;
 #endif
 
-long long last_cycle_timestamp = 0;
+unsigned long last_cycle_timestamp = 0;
 
 /* Define the lookup values used to estimate PCB temperature */
 #if PCB_TEMP_NTC_PRESENT
@@ -216,20 +216,20 @@ void system_setup()
 void system_loop(JsonDocument* json_message)
 {
   /* Take a note of the main cycle execution time: */
-  long long now = micros();
+  unsigned long now = millis();
 
   /* Log free memory */
   /* This function returns the minimum size of free heap memory that was available during program execution */
   /* the size of RAM on ESP32 is fixed at 512KB, roughly 200KB of which is used by IRAM cache/code sections, 
-     leaving around 320KB for program memory, half of which is available for dynamic allocation */
+     leaving around 320KB (327680 bytes) for program memory */
   (*json_message)["free_heap"] = esp_get_free_heap_size() / 1000.0; // In kilobytes
 
   /* Log the total time taken by the main cycle */
-  (*json_message)["cycle_time"] = (float(now - last_cycle_timestamp))/1000.0;
+  (*json_message)["cycle_time"] = float(now - last_cycle_timestamp);
   last_cycle_timestamp = now;
 
   /* Also log how much time was the device running */
-  (*json_message)["sys_millis"] = (now / 1000.0);
+  (*json_message)["sys_millis"] = now;
 
   /* Note down the PCB temperature (on-board NTC thermistor) */
   #if PCB_TEMP_NTC_PRESENT
@@ -239,10 +239,10 @@ void system_loop(JsonDocument* json_message)
 
   /* Since we crash after a bit over 1h of runtime: */
   /* If enoguh time has passed, just give up and try again */
-  if (millis() > (unsigned long)(45 * 60 * 1000))
-  {
-    ESP.restart();
-  }
+  // if (millis() >= (unsigned long)(45 * 60 * 1000))
+  // {
+  //   ESP.restart();
+  // }
 }
 
 void system_print_log(JsonDocument* json_message)

@@ -13,6 +13,8 @@
 #define PRESENCE_SENSOR_PRESENT   true   /* ... */
 #define LIGHT_SENSOR_PRESENT      true   /* ... */
 
+#define MQTT_LARGE_MESSAGE        false   /* ... */
+
 /*******************************************************/
 /*** TIMING DEFINES ************************************/
 /*******************************************************/
@@ -20,24 +22,24 @@
 /* Multiply 'seconds' with this to get value in 'milliseconds' */
 #define S_TO_MS (1000)
 
-/* Multiply 'milliseconds' with this to get value in 'microseconds' */
-#define MS_TO_US (1000)
+/* How much to wait between two MQTT frames (ms) */
+#define SEND_DELAY (60 * S_TO_MS)        /* Every 5min == 300s */
 
-/* How much to wait between two MQTT frames (us) */
-#define SEND_DELAY (300 * S_TO_MS * MS_TO_US)        /* Every 5min == 300s */
-
-/* Cycle time of the main program loop (us) */
-#define MAIN_CYCLE_TIME (200 * MS_TO_US)     /* 200ms cycle time (no need for being faster than this) */
+/* Cycle time of the main program loop (ms) */
+#define MAIN_CYCLE_TIME (200)     /* 200ms cycle time (no need for being faster than this) */
 /* For now it seems ~120ms is enough for ESP32 to do everything, so set this to be more than that for a stable SW */
 
-/* Cycle time of the debug loop (printing log to serial) in us */
-#define DEBUG_CYCLE_TIME (2 * S_TO_MS * MS_TO_US)    /* Print to Serial every 2s */
+/* Cycle time of the debug loop (printing log to serial) in ms */
+#define DEBUG_CYCLE_TIME (2 * S_TO_MS)    /* Print to Serial every 2s */
 
-/* How many us to wait before toggling the status LED */
-#define LED_BLINK_DELAY (1 * S_TO_MS * MS_TO_US) /* 1000ms = 1s */
+/* How many ms to wait before toggling the status LED */
+#define LED_BLINK_DELAY (1 * S_TO_MS) /* 1000ms = 1s */
 
 /** How often to blink the LED while waiting for WiFi connection? */
-#define WIFI_CONNECT_LED_BLINK_DELAY (200 * MS_TO_US)
+#define WIFI_CONNECT_LED_BLINK_DELAY (200)
+
+/** How much time to wait before trying to reconnect the MQTT (ms) */
+#define MQTT_CONNECTION_RETRY_DELAY (2000)
 
 
 /*******************************************************/
