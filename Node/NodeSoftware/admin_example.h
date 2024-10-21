@@ -1,5 +1,5 @@
-#ifndef ADMIN_H
-#define ADMIN_H
+#ifndef FLEX_ADMIN_H
+#define FLEX_ADMIN_H
 
 /***********************************************
  *  WiFi specific things
@@ -19,11 +19,11 @@ const char *network_devicename = "ESP32_Device_Name";
 const char *mqtt_username = "node_username";
 const char *mqtt_password = "node_password";
 /* IP address or URL of the MQTT broker */
-const char *mqtt_server = "192.168.0.10";
+const char *mqtt_server = "192.168.0.10"; /* IP address, or a url: "example.com" */
 
 /* To what topic to subscribe to? */
 const char *mqtt_subscribe_topic = "admin";
 /* To what topic should we send our data? */
 const char *mqtt_publish_topic = "nodes";
 
-#endif /* #ifndef ADMIN_H */
+#endif /* #ifndef FLEX_ADMIN_H */
