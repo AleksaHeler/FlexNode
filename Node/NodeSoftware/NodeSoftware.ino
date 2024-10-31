@@ -41,7 +41,7 @@ Driver *drivers[] =
 {
   new SystemHealthSensor(SYSTEM_STATUS_LED_PIN, DEBUG_CYCLE_TIME), /* Should always be first (so reading millis() will be accurate) */
   new AirQualitySensor(AIR_QUALITY_SENSOR_PIN),
-  new BMP280Sensor(/* Uses I2C pins 8 and 9 */),
+  new BMP280Sensor(/* Uses I2C pins 8 (SDA) and 9 (SCL) */),
   new DHT22Sensor(DHT22_PIN),
   new LightSensor(LIGHT_SENSOR_PIN),
   new PcbTempSensor(PCB_TEMP_PIN),

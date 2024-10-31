@@ -123,7 +123,7 @@ public:
 
         char tempString[MQTT_MESSAGE_MAX_LENGTH];
         serializeJson((*json_message), tempString);
-        Serial.print(" > Sending MQTT message: ");
+        Serial.print(" > Sending MQTT message (JSON string): ");
         Serial.println(tempString);
         /* Do we have a huge message to be sent? Should we send it in chunks? */
         #if MQTT_LARGE_MESSAGE /** @note To be tested */

@@ -33,11 +33,8 @@ Taken from [this video](https://www.youtube.com/watch?v=I4alYbgDi4I&list=PL3XBzm
   - office
 
 - sudo nano /etc/influxdb/influxdb.conf (HTTP enable, and bind to standard port)
-
 - create admin user
-
 - check if grafana and nodered work
-
 - todo: change from default ports, to use url/grafana and url/nodered (not port :3000, that should be blocked)
 
 - Hearbeat signal / watchdog
@@ -50,3 +47,5 @@ Taken from [this video](https://www.youtube.com/watch?v=I4alYbgDi4I&list=PL3XBzm
   > mosquitto_passwd -b passwords user password
   And check all the passwords:
   > cat passwords
+
+

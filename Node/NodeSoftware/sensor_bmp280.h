@@ -64,7 +64,7 @@ public:
       /* Then store them in the JSON */
       (*json_message)["bmp_temp"] = temperature;
       (*json_message)["bmp_press"] = pressure;
-      (*json_message)["bmp_alt"] = altitude;
+      // (*json_message)["bmp_alt"] = altitude;
     }
     else
     {

@@ -51,8 +51,8 @@ public:
     else
     {
       /* Then store them in the JSON */
-      (*json_message)["dth_temp"] = dht22_temperature;
-      (*json_message)["dth_humid"] = dht22_humidity;
+      (*json_message)["dht_temp"] = dht22_temperature;
+      (*json_message)["dht_humid"] = dht22_humidity;
     }
   }
 
